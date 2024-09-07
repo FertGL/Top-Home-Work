@@ -1,4 +1,4 @@
-package HW_7_8;
+package HW;
 
 public class Main {
 }

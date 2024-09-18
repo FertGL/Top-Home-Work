@@ -52,6 +52,5 @@ public class Main {
             case 9,10,11 -> System.out.println("Этот месяц пренадлежит к сезону <<Осень>>");
             default -> System.out.println("Такого месяца не существует");
         }
-
     }
 }

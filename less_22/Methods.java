@@ -7,7 +7,7 @@ public class Methods {
         String[] str = new String[]{};
         String[] str2 = new String[]{null};
         String[] str3 = new String[]{"a", "a", "a"};
-        System.out.println("char: " + Arrays.toString(cornerValuesArray(str)));
+        System.out.println("String: " + Arrays.toString(cornerValuesArray(str)));
         System.out.println("\t  " + Arrays.toString(cornerValuesArray(str2)));
         System.out.println("\t  " + Arrays.toString(cornerValuesArray(str3)));
 
@@ -16,7 +16,7 @@ public class Methods {
         char[] ch1 = new char[]{};
         char[] ch2 = new char[]{'a', 'a', 'a'};
         char[] ch3 = new char[]{' ', ' '};
-        System.out.println("String: " + Arrays.toString(cornerValuesArray(ch1)));
+        System.out.println("char: " + Arrays.toString(cornerValuesArray(ch1)));
         System.out.println("\t\t" + Arrays.toString(cornerValuesArray(ch2)));
         System.out.println("\t\t" + Arrays.toString(cornerValuesArray(ch3)));
 
@@ -63,7 +63,7 @@ public class Methods {
      * @return Возвращает массив с самой короткой и самой длинной строкой
      */
     public static String[] cornerValuesArray(String... strVarargs) {
-        if (strVarargs == null) {
+        if (strVarargs == null || strVarargs.length == 0) {
             return null;
         }
 
@@ -91,7 +91,7 @@ public class Methods {
      * @return Возвращает массив с самым большим и самым маленьким числом
      */
     public static int[] cornerValuesArray(int... intVarargs) {
-        if (intVarargs == null) {
+        if (intVarargs == null || intVarargs.length == 0) {
             return null;
         }
 
@@ -120,7 +120,7 @@ public class Methods {
      * @return Возвращает массив с самоым большим и самым маленьким (кодом/символом)(char)
      */
     public static char[] cornerValuesArray(char... charVarargs) {
-        if (charVarargs == null) {
+        if (charVarargs == null || charVarargs.length == 0) {
             return null;
         }
 
@@ -140,6 +140,13 @@ public class Methods {
         return newCharArr;
     }
 
+    /**
+     * Вычисляет факториал числа f , методом рекурсии
+     *
+     * @param f int
+     * @return Возврашает или число f, если f меньше или равно 1, или произведение f на этот же метод с параметром
+     * (f-1) ((Факториал))
+     */
     public static int getFactorial(int f) {
         if (f <= 1) {
             return f;

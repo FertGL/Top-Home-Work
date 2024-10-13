@@ -5,6 +5,8 @@ public class Book {
     private String nameOfBook;
     private Integer yearOfWrite;
 
+    public Book() {
+    }
 
     public Book(Author author, String nameOfBook, Integer yearOfWrite) {
         this.author = author;

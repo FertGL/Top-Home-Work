@@ -10,7 +10,6 @@ public class Main {
 
 
         System.out.println(book1);
-        System.out.println("------------------------------");
         System.out.println(book2);
     }
 }

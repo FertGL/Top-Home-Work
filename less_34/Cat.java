@@ -1,6 +1,6 @@
 package less_34;
 
-public class Cat extends Animal implements Petable {
+public final class Cat extends Animal implements Petable {
     public Cat(String name) {
         super(name);
     }

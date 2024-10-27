@@ -18,12 +18,13 @@ public class Player {
         countingPlayer();
     }
 
-    public static void countingPlayer() {
+    public static int countingPlayer() {
         if (countPlayer > 6) {
             countPlayer = 6;
         } else {
             new Player(random.nextInt(MIN_STAMINA, MAX_STAMINA));
         }
+        return countPlayer;
     }
 
 

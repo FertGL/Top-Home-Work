@@ -1,7 +1,7 @@
 package less_34;
 
-public class Bird extends Animal {
-    protected boolean canFly;
+public final class Bird extends Animal {
+    private final boolean canFly;
 
     public Bird(String name, boolean canFly) {
         super(name);

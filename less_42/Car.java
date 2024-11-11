@@ -13,6 +13,7 @@ public class Car extends MotorTransport{
 
     @Override
     public void service() {
+        super.service();
         System.out.println("Обслужили машину марки - " + getBrand() + " , модель: " + getModel());
     }
 

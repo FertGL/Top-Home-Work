@@ -10,6 +10,7 @@ public class MotorTransport extends WheeledTransport{
 
     @Override
     public void service() {
+        super.service();
         System.out.println("Обслужен двигатель - " + getEngineType());
     }
 

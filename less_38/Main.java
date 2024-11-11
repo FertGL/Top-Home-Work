@@ -1,22 +1,20 @@
 package less_38;
 
-import java.util.Random;
-
 public class Main {
     public static void main(String[] args) {
-        Random random = new Random();
-        Player p1 = new Player(random.nextInt(Player.MIN_STAMINA, Player.MAX_STAMINA));
-        Player p2 = new Player(random.nextInt(Player.MIN_STAMINA, Player.MAX_STAMINA));
-        Player p3 = new Player(random.nextInt(Player.MIN_STAMINA, Player.MAX_STAMINA));
-        Player p4 = new Player(random.nextInt(Player.MIN_STAMINA, Player.MAX_STAMINA));
+        Game game1 = new Game();
+        Player p1 = game1.addPlayer("Gleb");
+        Player p2 = game1.addPlayer("Ivan");
+        Player p3 = game1.addPlayer("Denis");
+        Player p4 = game1.addPlayer("Oleg");
+        Player p5 = game1.addPlayer("Sasha");
+        Player p6 = game1.addPlayer("Grisha");
+        Player p7 = game1.addPlayer("Sergey");
 
-        Player.info();
-        System.out.println(p1.getStamina());
-
-        for (int i = p1.stamina; i >= Player.MIN_STAMINA; i--) {
-            p1.run();
-        }
-        Player.info();
+        game1.gameInfo();
+        game1.findPlayer("Gleb");
+        p1.run();
+        game1.gameInfo();
     }
 }
 

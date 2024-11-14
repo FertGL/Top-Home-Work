@@ -21,4 +21,5 @@ public class MotorTransport extends WheeledTransport{
     public void setEngineType(String engineType) {
         this.engineType = engineType;
     }
+
 }

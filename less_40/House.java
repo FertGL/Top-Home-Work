@@ -1,5 +1,7 @@
 package less_40;
 
+import java.util.Objects;
+
 public class House {
     protected int floursCount;
     protected int roomsCount;
@@ -14,7 +16,7 @@ public class House {
         this.roomsCount = roomsCount;
     }
 
-    public House(Builder builder) {
+    private House(Builder builder) {
         this.floursCount = builder.floursCount;
         this.presenceOfGarage = builder.presenceOfGarage;
         this.roomsCount = builder.roomsCount;
@@ -55,5 +57,18 @@ public class House {
         public House build() {
             return new House(this);
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        House house = (House) o;
+        return floursCount == house.floursCount && roomsCount == house.roomsCount /*&& presenceOfGarage == house.presenceOfGarage*/;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(floursCount, roomsCount, presenceOfGarage);
     }
 }

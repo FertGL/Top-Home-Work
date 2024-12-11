@@ -12,9 +12,8 @@ public class Library {
     }
 
     public List<Book> getSortedBooks(boolean isAvailable,Comparator<Book> comparator) {
-        return books.entrySet()
+        return books.values()
                 .stream()
-                .map(b -> b.getValue())
                 .filter(b -> b.isAvailable() == isAvailable)
                 .sorted(comparator)
                 .toList();
@@ -44,9 +43,8 @@ public class Library {
     }
 
     public  List<Book> getSortedBooks(Comparator<Book> comparator) {
-        return books.entrySet()
+        return books.values()
                 .stream()
-                .map(t -> t.getValue())
                 .sorted(comparator)
                 .toList();
     }

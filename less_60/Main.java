@@ -5,10 +5,10 @@ import java.util.Comparator;
 public class Main {
     public static void main(String[] args) {
         Book b1 = new Book(1,"Название","Автор",true);
-        Book b2 = new Book(2,"Second title","Second Author",false);
-        Book b3 = new Book(3,"Third title","Third Author",true);
-        Book b4 = new Book(4,"Fourth title","Fourth Author",false);
-        Book b5 = new Book(5,"Fifth title","Fifth Author",true);
+        Book b2 = new Book(2,"Second title","Автор",false);
+        Book b3 = new Book(3,"Third title","Второй автор",true);
+        Book b4 = new Book(4,"Fourth title","Второй автор",false);
+        Book b5 = new Book(5,"Fifth title","Третий автор",true);
 
         Library library = new Library();
         library.addBook(b1);
@@ -38,5 +38,9 @@ public class Main {
         library.getBooksCount(true);
         library.getAllAuthors();
 
+        System.out.println("-----------------------------------------------");
+        System.out.println(library.getMapsBook());
+        System.out.println("-----------------------------------------------");
+        System.out.println(library.getBooksByAuthor());
     }
 }

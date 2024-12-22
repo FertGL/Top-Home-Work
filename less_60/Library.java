@@ -11,7 +11,7 @@ public class Library {
         return books;
     }
 
-    public List<Book> getSortedBooks(boolean isAvailable,Comparator<Book> comparator) {
+    public List<Book> getSortedBooks(boolean isAvailable, Comparator<Book> comparator) {
         return books.values()
                 .stream()
                 .filter(b -> b.isAvailable() == isAvailable)
@@ -42,7 +42,7 @@ public class Library {
         return books.get(id);
     }
 
-    public  List<Book> getSortedBooks(Comparator<Book> comparator) {
+    public List<Book> getSortedBooks(Comparator<Book> comparator) {
         return books.values()
                 .stream()
                 .sorted(comparator)
@@ -57,6 +57,18 @@ public class Library {
                 .distinct()
                 .collect(Collectors.toCollection(() -> new LinkedHashSet<>()));
         return allAuthors;
+    }
+
+    public Map<Boolean, List<Map.Entry<Integer, Book>>> getMapsBook() {
+        return books.entrySet()
+                .stream()
+                .collect(Collectors.partitioningBy(b -> b.getValue().isAvailable()));
+    }
+
+    public Map<String, List<Map.Entry<Integer, Book>>> getBooksByAuthor() {
+        return books.entrySet()
+                .stream()
+                .collect(Collectors.groupingBy(b -> b.getValue().getAuthor()));
     }
 }
 

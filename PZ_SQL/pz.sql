@@ -83,14 +83,15 @@ VALUES
 ('934TMC52','5'),
 ('934TMC52','5');
 
-SELECT "Number","Brand", "Seats", "Departure_city", "Arrival_city" , "Departure_date_time" FROM pz.plane
-ORDER BY "Departure_date_time" ASC;
+SELECT "number","brand", "seats", "departure_city", "arrival_city" , "departure_date_time" FROM pz.plane
+ORDER BY "departure_date_time" ASC;
 
-
+--Самолёты с количеством месть больше 50
 SELECT "number" ,COUNT(*) AS NumberOfPlanes FROM pz.plane
 WHERE "seats" > 50
 GROUP BY "number";
 
+--Пассажиры и их рейсы
 CREATE VIEW pz.passenger_plane AS
 (SELECT name_surname,
 pl.number,
@@ -98,19 +99,19 @@ pl.brand,
 (pl.departure_city, pl.arrival_city)::text AS "Рейс",
 pl.departure_date_time
 FROM pz.passenger p
-LEFT JOIN pz.plane pl ON p.number_of_plane = pl.number)
+LEFT JOIN pz.plane pl ON p.number_of_plane = pl.number
+WHERE pl.number IS NOT NULL)
 ORDER BY pl.brand;
-
 
 SELECT * FROM pz.passenger_plane;
 
-
+--Занятые места в самолётах
 CREATE VIEW pz.occupied_places_737 AS
 SELECT pl.brand, pl.number, s.passenger_id, p.name_surname
 FROM pz.plane pl
 LEFT JOIN pz.seat_boeing_737 s ON pl.number = s.number_of_plane
 LEFT JOIN pz.passenger p ON p.id = s.passenger_id
-WHERE s.passenger_id IS NOT NULL;
+WHERE s.passenger_id IS NOT NULL AND p.number_of_plane IS NOT NULL;
 
 SELECT * FROM pz.occupied_places_737
 
@@ -119,7 +120,7 @@ SELECT pl.brand, pl.number, s.passenger_id, p.name_surname
 FROM pz.plane pl
 LEFT JOIN pz.seat_boeing_777 s ON pl.number = s.number_of_plane
 LEFT JOIN pz.passenger p ON p.id = s.passenger_id
-WHERE s.passenger_id IS NOT NULL;
+WHERE s.passenger_id IS NOT NULL AND p.number_of_plane IS NOT NULL;
 
 SELECT * FROM pz.occupied_places_777
 
@@ -128,7 +129,7 @@ SELECT pl.brand, pl.number, s.passenger_id, p.name_surname
 FROM pz.plane pl
 LEFT JOIN pz.seat_airbus_a320 s ON pl.number = s.number_of_plane
 LEFT JOIN pz.passenger p ON p.id = s.passenger_id
-WHERE s.passenger_id IS NOT NULL;
+WHERE s.passenger_id IS NOT NULL AND p.number_of_plane IS NOT NULL;
 
 SELECT * FROM pz.occupied_airbus_a320
 
@@ -136,8 +137,7 @@ UPDATE pz.passenger
 SET number_of_plane = null
 WHERE id = 5
 
-SELECT * FROM pz.seat_boeing_777
-
+--Пассажиры которые вернули билеты
 SELECT
 s.passenger_id,
 COALESCE(p.number_of_plane, 'Вернул билет') AS number,
@@ -146,14 +146,35 @@ FROM pz.seat_boeing_777 s
 LEFT JOIN pz.passenger p ON p.id = s.passenger_id
 
 
+--Дата рейса в другом формате
 SELECT
+(departure_city, arrival_city)::text AS "Рейс",
 departure_date_time,
 TO_CHAR(departure_date_time, 'DD Month YYYY') AS formatted_date
 FROM pz.plane;
 
+--Перенос рейса на 12 часов
 SELECT number,brand, departure_city, arrival_city,
 CASE
 	WHEN number = '291AUI03' THEN departure_date_time + INTERVAL '12 hours'
 	ELSE departure_date_time
 END
 FROM pz.plane
+
+
+--Функция добавления самолёта
+CREATE OR REPLACE FUNCTION pz.add_plane(
+    p_number VARCHAR(10),
+    p_brand VARCHAR(20),
+    p_seats INT,
+    p_departure_city VARCHAR(50),
+    p_arrival_city VARCHAR(50),
+    p_departure_date_time TIMESTAMP
+) RETURNS VOID AS $$
+BEGIN
+    INSERT INTO pz.plane (number, brand, seats, departure_city, arrival_city, departure_date_time)
+    VALUES (p_number, p_brand, p_seats, p_departure_city, p_arrival_city, p_departure_date_time);
+END;
+$$ LANGUAGE plpgsql;
+
+SELECT * FROM pz.plane

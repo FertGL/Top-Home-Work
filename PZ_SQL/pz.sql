@@ -114,6 +114,24 @@ WHERE s.passenger_id IS NOT NULL;
 
 SELECT * FROM pz.occupied_places_737
 
+CREATE VIEW pz.occupied_places_777 AS
+SELECT pl.brand, pl.number, s.passenger_id, p.name_surname
+FROM pz.plane pl
+LEFT JOIN pz.seat_boeing_777 s ON pl.number = s.number_of_plane
+LEFT JOIN pz.passenger p ON p.id = s.passenger_id
+WHERE s.passenger_id IS NOT NULL;
+
+SELECT * FROM pz.occupied_places_777
+
+CREATE VIEW pz.occupied_airbus_a320 AS
+SELECT pl.brand, pl.number, s.passenger_id, p.name_surname
+FROM pz.plane pl
+LEFT JOIN pz.seat_airbus_a320 s ON pl.number = s.number_of_plane
+LEFT JOIN pz.passenger p ON p.id = s.passenger_id
+WHERE s.passenger_id IS NOT NULL;
+
+SELECT * FROM pz.occupied_airbus_a320
+
 UPDATE pz.passenger
 SET number_of_plane = null
 WHERE id = 5

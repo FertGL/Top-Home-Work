@@ -1,5 +1,6 @@
 package Servers.HomeWork.workWithDB.Controllers;
 
+import Servers.HomeWork.workWithDB.MainController;
 import Servers.HomeWork.workWithDB.Models.TeacherModel;
 
 import java.util.Scanner;
@@ -7,8 +8,7 @@ import java.util.Scanner;
 public class TeacherController {
     private final TeacherModel teacherModel;
 
-    public TeacherController()
-    {
+    public TeacherController() {
         this.teacherModel = new TeacherModel();
     }
 
@@ -40,9 +40,11 @@ public class TeacherController {
                 }
 
                 System.out.println(teacherModel.add(teacherName, teacherSurname, salary));
+                controller();
             }
             case "2" -> {
                 teacherModel.update();
+                controller();
             }
             case "3" -> {
                 System.out.println("Имя преподавателя: ");
@@ -51,8 +53,16 @@ public class TeacherController {
                     teacherName = scanner.nextLine();
                 }
                 System.out.println(teacherModel.delete(teacherName));
+                controller();
             }
-            case "4" -> teacherModel.get();
+            case "4" -> {
+                teacherModel.get();
+                controller();
+            }
+            case "5" -> {
+                MainController.start();
+            }
+
         }
     }
 }

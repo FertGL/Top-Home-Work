@@ -2,7 +2,7 @@ package less_18;
 
 public class Main {
     public static void main(String[] args) {
-        task3();
+        task2();
     }
 
     static void task() {
@@ -15,24 +15,43 @@ public class Main {
     }
 
     static void task2() {
-        String st = "Gbdder";
+        String st = "HelloolleH";
         boolean b = false;
+        StringBuilder firtPart = new StringBuilder();
+        StringBuilder secondPart = new StringBuilder();
 
-        for (int i = 0; i <= st.length() - 1; i++) {
-            for (int a = st.length() - 1; a >= 0; a--) {
-                if (st.charAt(i) == st.charAt(a)) {
-                    b = true;
-                } else {
-                    b = false;
-                }
-            }
+        for (int i = 0; i <= (st.length() - 1) / 2; i++) {
+                firtPart.append(st.charAt(i));
+        }
+        for (int a = st.length() - 1; a >= (st.length())/2 ; a--) {
+                secondPart.append(st.charAt(a));
         }
 
-        if (b) {
+        if ((String.valueOf(firtPart).toLowerCase()).equals(String.valueOf(secondPart).toLowerCase())) {
             System.out.println("Это палиндром");
         } else {
             System.out.println("Это не палиндром");
         }
+
+//            for (int a = st.length() - 1; a >= (st.length() - 1)/2 ; a--) {
+//                StringBuilder firtPart = new StringBuilder();
+//                firtPart.append(st.charAt(i));
+//                System.out.print(firtPart);
+//                StringBuilder secondPart = new StringBuilder();
+//                secondPart.append(st.charAt(a));
+//                System.out.println(secondPart);
+//                if (firtPart.equals(secondPart)) {
+//                    b = true;
+//                } else {
+//                    b = false;
+//                }
+//            }
+
+//        if (b) {
+//            System.out.println("Это палиндром");
+//        } else {
+//            System.out.println("Это не палиндром");
+//        }
     }
 
     static void task3() {

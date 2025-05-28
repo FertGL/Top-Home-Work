@@ -42,20 +42,20 @@ public class Main {
                 preparedStatement.setString(2,name);
                 preparedStatement.setString(3,surname);
             }
-
+                System.out.println("added");
                 ///Удаление полей таблицы
 //                String sqlQuery = "DELETE FROM Person";
 //                int deleterows = statement.executeUpdate(sqlQuery);
 //                System.out.println(deleterows);
 
                 ///Вывод Select в консоль
-              String sqlQuery = "SELECT * FROM Person;";
-              ResultSet resultSet = statement.executeQuery(sqlQuery);
-              while (resultSet.next()) {
-                  System.out.println(resultSet.getInt(1) + " " +
-                          resultSet.getString(2) + " " +
-                          resultSet.getString(3));
-              }
+//              String sqlQuery = "SELECT * FROM Person;";
+//              ResultSet resultSet = statement.executeQuery(sqlQuery);
+//              while (resultSet.next()) {
+//                  System.out.println(resultSet.getInt(1) + " " +
+//                          resultSet.getString(2) + " " +
+//                          resultSet.getString(3));
+//              }
 
 //              System.out.println(statement.executeQuery(sqlQuery));
             }

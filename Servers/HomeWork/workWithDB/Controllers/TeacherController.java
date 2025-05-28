@@ -27,17 +27,12 @@ public class TeacherController {
         switch (chose) {
             case "1" -> {
                 System.out.println("Имя преподавателя: ");
-                String teacherName = scanner.nextLine();
-                if (teacherName.isEmpty()) {
-                    teacherName = scanner.nextLine();
-                }
+                String teacherName = scanner.next();
                 System.out.println("Зарплата: ");
                 int salary = scanner.nextInt();
                 System.out.println("Фамилия преподавателя: ");
-                String teacherSurname = scanner.nextLine();
-                if (teacherSurname.isEmpty()) {
-                    teacherSurname = scanner.nextLine();
-                }
+                String teacherSurname = scanner.next();
+
 
                 System.out.println(teacherModel.add(teacherName, teacherSurname, salary));
                 controller();

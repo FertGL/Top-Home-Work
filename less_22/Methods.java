@@ -145,7 +145,7 @@ public class Methods {
      *
      * @param f int
      * @return Возврашает или число f, если f меньше или равно 1, или произведение f на этот же метод с параметром
-     * (f-1) ((Факториал))
+     * (f-1) ((Факториал))й
      */
     public static int getFactorial(int f) {
         if (f <= 1) {

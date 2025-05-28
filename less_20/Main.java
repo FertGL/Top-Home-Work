@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        task5();
+        task3();
     }
 
     static void task1() {
@@ -37,10 +37,13 @@ public class Main {
         char[] alsoChars = {'a','e','i','o','u'};
 
         for(char ch : chars) {
-            for (char chs : alsoChars) {
-                if(String.valueOf(ch).toLowerCase().equals(String.valueOf(chs).toLowerCase())) {
-                    count++;
-                }
+//            for (char chs : alsoChars) {
+//                if(String.valueOf(ch).toLowerCase().equals(String.valueOf(chs).toLowerCase())) {
+//                    count++;
+//                }
+//            }
+            if((Arrays.asList(chars).contains(ch))) {
+                count++;
             }
         }
         System.out.println(count);

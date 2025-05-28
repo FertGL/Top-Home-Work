@@ -1,4 +1,4 @@
-package less_44;
+package less_46;
 
 public class Car implements Comparable<Car> {
     private String model;

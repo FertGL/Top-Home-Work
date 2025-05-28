@@ -1,5 +1,7 @@
 package Servers.HomeWork.workWithDB.Models;
 
+import Servers.HomeWork.workWithDB.Controllers.TeacherController;
+
 import java.sql.*;
 import java.util.Scanner;
 
@@ -8,10 +10,6 @@ public class TeacherModel {
     private final String USERNAME;
     private final String PASS;
 
-    public static void main(String[] args) {
-        TeacherModel teacherModel = new TeacherModel();
-        teacherModel.add("Gleb","Fert",200000);
-    }
     public TeacherModel() {
         URL = "jdbc:mysql://127.0.0.1:3306/javaApiProjectDB";
         USERNAME = "root";
@@ -66,6 +64,7 @@ public class TeacherModel {
         sb.append("1. Изменить имя" + "\n");
         sb.append("2. Изменить фамилию" + "\n");
         sb.append("3. Изменить оклад" + "\n");
+        sb.append("4. Назад");
 
         System.out.println(sb);
         Scanner scanner = new Scanner(System.in);
@@ -107,6 +106,7 @@ public class TeacherModel {
                             "WHERE Id = " + id + ";");
                     return true;
                 }
+                case 4 -> new TeacherController().controller();
             }
 
         } catch (Exception e) {

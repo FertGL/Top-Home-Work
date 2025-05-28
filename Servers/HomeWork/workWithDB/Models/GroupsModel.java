@@ -87,23 +87,23 @@ public class GroupsModel {
             switch (chose) {
                 case 1 -> {
                     System.out.println("Введите СТАРОЕ название группы: ");
-                    String oldName = scanner.nextLine();
+                    String oldName = scanner.next();
 
                     System.out.println("Введите НОВОЕ название группы: ");
                     String newName = scanner.next();
                     int sqlUpdateRows = statement.executeUpdate("UPDATE grups\n" +
                             "SET name = '" + newName + "'\n" +
-                            " WHERE name = " + oldName + ";");
+                            " WHERE name = '" + oldName + "';");
                     return true;
                 }
                 case 2 -> {
                     System.out.println("Введите название группы: ");
-                    String name = scanner.nextLine();
+                    String name = scanner.next();
                     System.out.println("Введите НОВЫЙ номер курса: ");
                     short newYear = (short) scanner.nextInt();
                     int sqlUpdateRows = statement.executeUpdate("UPDATE grups\n" +
                             "SET year = '" + newYear + "'\n" +
-                            " WHERE name = " + name + ";");
+                            " WHERE name = '" + name + "';");
                     return true;
                 }
 

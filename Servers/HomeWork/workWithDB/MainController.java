@@ -1,13 +1,16 @@
 package Servers.HomeWork.workWithDB;
 
 import Servers.HomeWork.workWithDB.Controllers.GroupsController;
+import Servers.HomeWork.workWithDB.Controllers.SubjectController;
 import Servers.HomeWork.workWithDB.Controllers.TeacherController;
 
 import java.util.Scanner;
 
 public class MainController {
-    private static TeacherController controller = new TeacherController();
-    private static GroupsController controller1 = new GroupsController();
+    private static TeacherController teacherController = new TeacherController();
+    private static GroupsController groupsController = new GroupsController();
+    private static SubjectController subjectController = new SubjectController();
+
     public static void main(String[] args) {
         start();
     }
@@ -23,9 +26,9 @@ public class MainController {
 
         String chose = scanner.next();
         switch (chose) {
-            case "1" -> controller1.controller();
-            case "2" -> controller.controller();
-//            case "3" -> ;
+            case "1" -> groupsController.controller();
+            case "2" -> teacherController.controller();
+            case "3" -> subjectController.controller();
             case "4" -> System.exit(0);
         }
 
